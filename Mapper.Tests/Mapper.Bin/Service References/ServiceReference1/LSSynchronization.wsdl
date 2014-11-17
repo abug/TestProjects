@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x11176302" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x11176302" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="LSItemTranslation">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="LanguageCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="ShortDescription" type="string" />
+          <element minOccurs="0" maxOccurs="1" name="FullDescription" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="LSItemVariantTranslation">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="LanguageCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="LSAttribute">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" default="0" name="Index" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="Caption" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Value" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="LSDimension">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" default="0" name="Index" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="Caption" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Value" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="ViewingColor" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Weight" type="string" />
+          <element minOccurs="1" maxOccurs="unbounded" name="LSAttribute" type="tns:LSAttribute" />
+        </sequence>
+      </complexType>
+      <complexType name="LSItemVariantRegistration">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" default="0" name="LogicalOrder" type="int" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="VariantWeight" type="decimal" />
+          <element minOccurs="1" maxOccurs="unbounded" name="LSDimension" type="tns:LSDimension" />
+        </sequence>
+      </complexType>
+      <complexType name="LSItemVariant">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="Code" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StockQuantity2" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StockThreshold" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="Blocked" type="string" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSItemVariantTranslation" type="tns:LSItemVariantTranslation" />
+          <element minOccurs="0" maxOccurs="1" name="LSItemVariantRegistration" type="tns:LSItemVariantRegistration" />
+        </sequence>
+      </complexType>
+      <complexType name="LSRelatedItem">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="ItemNo" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="RelatedItemNo" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DisplayOrder" type="int" />
+        </sequence>
+      </complexType>
+      <complexType name="LSItem">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="ItemNo" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Name" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="ShortDescription" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="ProductTemplateId" type="int" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="ShowOnHomePage" type="boolean" />
+          <element minOccurs="1" maxOccurs="1" name="ItemDiscountGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="Published" type="boolean" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Price" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Cost" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StockQuantity" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StockThreshold" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="VATProdPostingGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="Blocked" type="boolean" />
+          <element minOccurs="0" maxOccurs="1" name="FullDescription" type="string" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSItemTranslation" type="tns:LSItemTranslation" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSItemVariant" type="tns:LSItemVariant" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSRelatedItem" type="tns:LSRelatedItem" />
+        </sequence>
+      </complexType>
+      <complexType name="LSItemResponse" mixed="true">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="LSItem" type="tns:LSItem" />
+        </sequence>
+      </complexType>
+      <element name="LSItemResponse" type="tns:LSItemResponse" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x11176301" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x11176301" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="LSOpeningHours">
+        <sequence>
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="StaringDate" type="date" />
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="EndingDate" type="date" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DayNumber" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="DayName" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="00:00:00" name="TimeFrom" type="time" />
+          <element minOccurs="1" maxOccurs="1" default="00:00:00" name="TimeTo" type="time" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="IncludeAllWeekDays" type="boolean" />
+        </sequence>
+      </complexType>
+      <complexType name="LSStore">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="No" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Name" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Address" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Address2" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="City" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="ZipPostalCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="PhoneNumber" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="CountryTwoLetterISOCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Latitude" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Longitude" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StoreSize" type="int" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSOpeningHours" type="tns:LSOpeningHours" />
+        </sequence>
+      </complexType>
+      <complexType name="LSStoreResponse" mixed="true">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="LSStore" type="tns:LSStore" />
+        </sequence>
+      </complexType>
+      <element name="LSStoreResponse" type="tns:LSStoreResponse" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x11176303" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x11176303" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="LSPeriodicDiscountLine">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="OfferNo" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="LineNo" type="int" />
+          <element minOccurs="0" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="No" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="VariantCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StandardPriceIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StandardPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DealPriceDiscPerc" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="UnitOfMeasure" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="ProdGroupCategory" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="LineGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="NoOfItemsNeeded" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="DiscType" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscountAmount" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="OfferPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="OfferPriceIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscountAmountIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="Status" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="VariantType" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="Exlude" type="boolean" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="MemberPoints" type="decimal" />
+        </sequence>
+      </complexType>
+      <complexType name="LSPeriodicDiscount">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="No" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Status" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="OfferType" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Priority" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="string" />
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="StartingDate" type="date" />
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="EndingDate" type="date" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="BlockPeriodicDiscount" type="boolean" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroupValidation" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="AmountToTrigger" type="decimal" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSPeriodicDiscountLine" type="tns:LSPeriodicDiscountLine" />
+        </sequence>
+      </complexType>
+      <complexType name="LSPeriodicDiscountResponse" mixed="true">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="LSPeriodicDiscount" type="tns:LSPeriodicDiscount" />
+        </sequence>
+      </complexType>
+      <element name="LSPeriodicDiscountResponse" type="tns:LSPeriodicDiscountResponse" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x11176304" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x11176304" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="LSOfferLine">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="OfferNo" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="LineNo" type="int" />
+          <element minOccurs="0" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="No" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StandardPriceIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="StandardPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscPerc" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscountAmount" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="OfferPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="OfferPriceIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscountAmountIncludingVAT" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="UnitOfMeasure" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="VariantCode" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="Quantity" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="VariantType" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="Exlude" type="boolean" />
+        </sequence>
+      </complexType>
+      <complexType name="LSOffer">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" name="No" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Description" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="Status" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="OfferType" type="string" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroup" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DiscPercFromStdPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="CurrencyCode" type="string" />
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="StartingDate" type="date" />
+          <element minOccurs="0" maxOccurs="1" default="0001-01-01" name="EndingDate" type="date" />
+          <element minOccurs="1" maxOccurs="1" default="false" name="BlockPeriodicDiscount" type="boolean" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="DealPrice" type="decimal" />
+          <element minOccurs="1" maxOccurs="1" name="PriceGroupValidation" type="string" />
+          <element minOccurs="0" maxOccurs="unbounded" name="LSOfferLine" type="tns:LSOfferLine" />
+        </sequence>
+      </complexType>
+      <complexType name="LSOfferResponse" mixed="true">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="LSOffer" type="tns:LSOffer" />
+        </sequence>
+      </complexType>
+      <element name="LSOfferResponse" type="tns:LSOfferResponse" />
+    </schema>
+    <schema xmlns:tns="urn:microsoft-dynamics-nav/xmlports/x11176100" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-nav/xmlports/x11176100" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="NavSyncQueue">
+        <sequence>
+          <element minOccurs="1" maxOccurs="1" default="0" name="EntryNo" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="Type" type="string" />
+          <element minOccurs="1" maxOccurs="1" default="0" name="TableNo" type="int" />
+          <element minOccurs="1" maxOccurs="1" name="RecId" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="NavSyncQueueResponse" mixed="true">
+        <sequence>
+          <element minOccurs="0" maxOccurs="unbounded" name="NavSyncQueue" type="tns:NavSyncQueue" />
+        </sequence>
+      </complexType>
+      <element name="NavSyncQueueResponse" type="tns:NavSyncQueueResponse" />
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="Version">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="Version_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProduct">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="queueEntryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageIndex" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageSize" type="int" />
+            <element xmlns:q1="urn:microsoft-dynamics-nav/xmlports/x11176302" minOccurs="1" maxOccurs="1" name="response" type="q1:LSItemResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetProduct_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+            <element xmlns:q2="urn:microsoft-dynamics-nav/xmlports/x11176302" minOccurs="1" maxOccurs="1" name="response" type="q2:LSItemResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStore">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="queueEntryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageIndex" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageSize" type="int" />
+            <element xmlns:q3="urn:microsoft-dynamics-nav/xmlports/x11176301" minOccurs="1" maxOccurs="1" name="response" type="q3:LSStoreResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStore_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+            <element xmlns:q4="urn:microsoft-dynamics-nav/xmlports/x11176301" minOccurs="1" maxOccurs="1" name="response" type="q4:LSStoreResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPeriodicDiscount">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="queueEntryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageIndex" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageSize" type="int" />
+            <element xmlns:q5="urn:microsoft-dynamics-nav/xmlports/x11176303" minOccurs="1" maxOccurs="1" name="response" type="q5:LSPeriodicDiscountResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPeriodicDiscount_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+            <element xmlns:q6="urn:microsoft-dynamics-nav/xmlports/x11176303" minOccurs="1" maxOccurs="1" name="response" type="q6:LSPeriodicDiscountResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetOffer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="queueEntryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageIndex" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageSize" type="int" />
+            <element xmlns:q7="urn:microsoft-dynamics-nav/xmlports/x11176304" minOccurs="1" maxOccurs="1" name="response" type="q7:LSOfferResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetOffer_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+            <element xmlns:q8="urn:microsoft-dynamics-nav/xmlports/x11176304" minOccurs="1" maxOccurs="1" name="response" type="q8:LSOfferResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSyncBuffer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pageIndex" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pageSize" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="tableNo" type="int" />
+            <element xmlns:q9="urn:microsoft-dynamics-nav/xmlports/x11176100" minOccurs="1" maxOccurs="1" name="response" type="q9:NavSyncQueueResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSyncBuffer_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+            <element xmlns:q10="urn:microsoft-dynamics-nav/xmlports/x11176100" minOccurs="1" maxOccurs="1" name="response" type="q10:NavSyncQueueResponse" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteSyncBuffer">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="entryNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="tableNo" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteSyncBuffer_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="Version">
+    <part name="parameters" element="tns:Version" />
+  </message>
+  <message name="Version_Result">
+    <part name="parameters" element="tns:Version_Result" />
+  </message>
+  <message name="GetProduct">
+    <part name="parameters" element="tns:GetProduct" />
+  </message>
+  <message name="GetProduct_Result">
+    <part name="parameters" element="tns:GetProduct_Result" />
+  </message>
+  <message name="GetStore">
+    <part name="parameters" element="tns:GetStore" />
+  </message>
+  <message name="GetStore_Result">
+    <part name="parameters" element="tns:GetStore_Result" />
+  </message>
+  <message name="GetPeriodicDiscount">
+    <part name="parameters" element="tns:GetPeriodicDiscount" />
+  </message>
+  <message name="GetPeriodicDiscount_Result">
+    <part name="parameters" element="tns:GetPeriodicDiscount_Result" />
+  </message>
+  <message name="GetOffer">
+    <part name="parameters" element="tns:GetOffer" />
+  </message>
+  <message name="GetOffer_Result">
+    <part name="parameters" element="tns:GetOffer_Result" />
+  </message>
+  <message name="GetSyncBuffer">
+    <part name="parameters" element="tns:GetSyncBuffer" />
+  </message>
+  <message name="GetSyncBuffer_Result">
+    <part name="parameters" element="tns:GetSyncBuffer_Result" />
+  </message>
+  <message name="DeleteSyncBuffer">
+    <part name="parameters" element="tns:DeleteSyncBuffer" />
+  </message>
+  <message name="DeleteSyncBuffer_Result">
+    <part name="parameters" element="tns:DeleteSyncBuffer_Result" />
+  </message>
+  <portType name="LSSynchronization_Port">
+    <operation name="Version">
+      <input name="Version" message="tns:Version" />
+      <output name="Version_Result" message="tns:Version_Result" />
+    </operation>
+    <operation name="GetProduct">
+      <input name="GetProduct" message="tns:GetProduct" />
+      <output name="GetProduct_Result" message="tns:GetProduct_Result" />
+    </operation>
+    <operation name="GetStore">
+      <input name="GetStore" message="tns:GetStore" />
+      <output name="GetStore_Result" message="tns:GetStore_Result" />
+    </operation>
+    <operation name="GetPeriodicDiscount">
+      <input name="GetPeriodicDiscount" message="tns:GetPeriodicDiscount" />
+      <output name="GetPeriodicDiscount_Result" message="tns:GetPeriodicDiscount_Result" />
+    </operation>
+    <operation name="GetOffer">
+      <input name="GetOffer" message="tns:GetOffer" />
+      <output name="GetOffer_Result" message="tns:GetOffer_Result" />
+    </operation>
+    <operation name="GetSyncBuffer">
+      <input name="GetSyncBuffer" message="tns:GetSyncBuffer" />
+      <output name="GetSyncBuffer_Result" message="tns:GetSyncBuffer_Result" />
+    </operation>
+    <operation name="DeleteSyncBuffer">
+      <input name="DeleteSyncBuffer" message="tns:DeleteSyncBuffer" />
+      <output name="DeleteSyncBuffer_Result" message="tns:DeleteSyncBuffer_Result" />
+    </operation>
+  </portType>
+  <binding name="LSSynchronization_Binding" type="tns:LSSynchronization_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="Version">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:Version" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="Version">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="Version_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetProduct">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:GetProduct" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetProduct">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetProduct_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStore">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:GetStore" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStore">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStore_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPeriodicDiscount">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:GetPeriodicDiscount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPeriodicDiscount">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPeriodicDiscount_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetOffer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:GetOffer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetOffer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetOffer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSyncBuffer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:GetSyncBuffer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSyncBuffer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSyncBuffer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="DeleteSyncBuffer">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/LSSynchronization:DeleteSyncBuffer" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteSyncBuffer">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteSyncBuffer_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="LSSynchronization">
+    <port name="LSSynchronization_Port" binding="tns:LSSynchronization_Binding">
+      <address location="http://sql-dev-01.landsteinar-nl.local:7047/NAV2013R2_LS71_OCP_DEV/WS/CRONUS%20LS%2071%20W1%20Demo%20v15/Codeunit/LSSynchronization" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

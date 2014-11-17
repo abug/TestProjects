@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;LSSynchronization_Binding&quot; /&gt;" bindingType="basicHttpBinding" name="LSSynchronization_Binding" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://sql-dev-01.landsteinar-nl.local:7047/NAV2013R2_LS71_OCP_DEV/WS/CRONUS%20LS%2071%20W1%20Demo%20v15/Codeunit/LSSynchronization&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;LSSynchronization_Binding&quot; contract=&quot;ServiceReference1.LSSynchronization_Port&quot; name=&quot;LSSynchronization_Port&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://sql-dev-01.landsteinar-nl.local:7047/NAV2013R2_LS71_OCP_DEV/WS/CRONUS%20LS%2071%20W1%20Demo%20v15/Codeunit/LSSynchronization&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;LSSynchronization_Binding&quot; contract=&quot;ServiceReference1.LSSynchronization_Port&quot; name=&quot;LSSynchronization_Port&quot; /&gt;" contractName="ServiceReference1.LSSynchronization_Port" name="LSSynchronization_Port" />
+  </endpoints>
+</configurationSnapshot>

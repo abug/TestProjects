@@ -20,6 +20,10 @@ namespace Mapper.Tests
             _logger = new SimpleLogger();
         }
 
+        public void Test()
+        {
+        }
+
         [Test]
         public void Automapper_Flattening_Test()
         {
